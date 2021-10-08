@@ -161,16 +161,25 @@ class CryptoList extends Component {
     render() {
         return(
             <div>
+                <th>
+                    <td></td>
+                    <td>Name</td>
+                    <td>Current Price</td>
+                    <td>Market Cap</td>
+                    <td>Total Volume</td>
+                    <td>Price Change 24h</td>
+                    <td>Circulating Supply</td>
+                </th>
                 {this.state.coins.map((c) => {return(
-                    <div>
-                        <img src={c.image} alt="coin logo" />
-                        <h1>{c.name}</h1>
-                        <h3>Current Price: <b>{c.current_price}</b></h3>
-                        <h3>Market Cap: <b>{c.market_cap}</b></h3>
-                        <h3>Total Volume: <b>{c.total_volume}</b></h3>
-                        <h3>Price Change 24h: <b>{c.price_change_24h} ({c.price_change_percentage_24h}%)</b><img src={c.price_change_percentage_24h <= 0 ? redArrow : greenArrow }></img></h3>
-                        <h3>Circulating Supply: <b>{c.circulating_supply}</b></h3>
-                    </div>
+                    <tr>
+                        <td><img src={c.image} alt="coin logo" /></td>
+                        <td><h1>{c.name}</h1></td>
+                        <td><h3>Current Price: <b>{c.current_price}</b></h3></td>
+                        <td><h3>Market Cap: <b>{c.market_cap}</b></h3></td>
+                        <td><h3>Total Volume: <b>{c.total_volume}</b></h3></td>
+                        <td><h3>Price Change 24h: <b>{c.price_change_24h} ({c.price_change_percentage_24h}%)</b><img src={c.price_change_percentage_24h <= 0 ? redArrow : greenArrow } alt="percentage"></img></h3></td>
+                        <td><h3>Circulating Supply: <b>{c.circulating_supply}</b></h3></td>
+                    </tr>
                 )})}
             </div>
         );
