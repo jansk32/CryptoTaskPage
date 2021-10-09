@@ -6,13 +6,33 @@ import CryptoList from './cryptoListComponent';
 
 function App() {
 
-  var [data, sethata] = useState([]);
+  var [data, setData] = useState([]);
+  var [limit, setLimit] = useState(10)
 
   useEffect(() => {
     axios("https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud", {crossDomain: true})
-    .then(res => sethata(res.data))
+    .then(res => {
+      setData(res.data)
+    })
     .catch(err => console.log(err))
   },[])
+
+
+
+  useEffect(() => {
+    window.addEventListener("click", () => {
+      loadMore();
+    })
+
+    return () => {
+      window.removeEventListener('click', () => {})
+    }
+  })
+
+  function loadMore() {
+    setLimit(limit + 10);
+  }
+
 
   return (
     <div className="App">
@@ -34,13 +54,14 @@ function App() {
                     <th>Circulating Supply</th>
         </thead>
                 <tbody>
-                {data.map((c) => {
+                {data.slice(0,limit).map((c) => {
                   return(
                   <CryptoList coin={c}/>
                   )
                 })}
                 </tbody>
     </table>
+    <button >Load 10 more</button>
     </center>
     </div>
   );
