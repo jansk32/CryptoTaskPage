@@ -102,9 +102,9 @@ function App() {
 
   // Search Bar
   function searchBar(e){
-    var val = e.target.value;
+    var val = e.target.value.toLowerCase();
     if (val) {
-      let n = data.filter(obj => (obj.name.includes(val) || obj.symbol.includes(val)))
+      let n = data.filter(obj => (obj.name.toLowerCase().includes(val) || obj.symbol.toLowerCase().includes(val)))
       setShownData(n)
     }else{
       setShownData(data)
@@ -135,7 +135,7 @@ function App() {
                   return(
                   <CryptoList coin={c} key={c.id}/>
                   )
-                }): <ErrorComponent error="NO RESULTS FOUND!"/>} 
+                }): <ErrorComponent error="NO COINS FOUND!"/>} 
                 </tbody>
     </table>
     {data.length > limit && shownData.length > 10 && <button onClick={isLoadMore}>Load 10 more</button>}
