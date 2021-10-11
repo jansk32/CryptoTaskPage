@@ -104,7 +104,7 @@ function App() {
   function searchBar(e){
     var val = e.target.value;
     if (val) {
-      let n = data.filter(obj => obj.name.includes(val))
+      let n = data.filter(obj => (obj.name.includes(val) || obj.symbol.includes(val)))
       setShownData(n)
     }else{
       setShownData(data)
