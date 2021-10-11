@@ -1,12 +1,24 @@
 import React from 'react'
 
 function ErrorComponent(props) {
-
+    if(props.error === "noResult"){
     return (
-        <div>
-            <h1>{props.error}</h1>
-        </div>
+        <tr>
+            <td colSpan="7">
+                <center>
+                <h1>NO RESULTS FOUND!</h1>
+                <p>Try another search word...</p>
+                </center>
+                </td>
+        </tr>
     )
+    }else{
+        return (
+            <div>
+                <h1>THERE WAS AN ERROR WITH THE CONNECTION</h1>
+            </div>
+        )
+    }
 }
 
 export default ErrorComponent;

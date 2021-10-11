@@ -135,7 +135,7 @@ function App() {
                   return(
                   <CryptoList coin={c} key={c.id}/>
                   )
-                }): <ErrorComponent error="NO COINS FOUND!"/>} 
+                }): <ErrorComponent errorMessage="NO COINS FOUND!" error="noResult" style={{backgroundColor: "blue"}}/>} 
                 </tbody>
     </table>
     {data.length > limit && shownData.length > 10 && <button onClick={isLoadMore}>Load 10 more</button>}
