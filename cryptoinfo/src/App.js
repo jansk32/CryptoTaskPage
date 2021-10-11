@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import {useEffect, useState} from 'react';
 import './App.css';
 import axios from 'axios';
 import CryptoList from './cryptoListComponent';
 import LoadingComponent from './loadingComponent';
 import ErrorComponent from './noResultsComponent';
+import DetailPage from'./detailsPage'
 
 
 function App() {
@@ -32,38 +32,6 @@ function App() {
     })
     .catch(err => setErr(true))
   },[])
-
-
-
-
-  // to update values during clicked event
-  // async function isClicked() {
-  //   if (loadMore === true){
-  //     await setLimit(limit + 10);
-  //     await setLoadMore(false);
-  //   }else if (sort.isSort === true){
-  //     // ascending order only
-  //     await console.log("Sorting data")
-  //     var tmp_data = await data.sort((a,b) => compare(a[sort.column],b[sort.column]))
-  //     await console.log("finished sorting!")
-  //     await console.log(tmp_data);
-  //     await setData(tmp_data);
-  //     setSort({
-  //       isSort: false,
-  //       column: ""
-  //     });
-      
-  //   }
-  // }
-
-  // handle events on this page
-  // useEffect(() => {
-  //   window.addEventListener("click", isClicked, { passive: false })
-
-  //   return () => {
-  //     window.removeEventListener('click', isClicked, { passive: false })
-  //   }
-  // })
 
 
   // handle click of load More button
@@ -113,36 +81,39 @@ function App() {
   }
 
   return (
-    (isLoad ? <div className="App">
-      <div style={{backgroundColor: "blue", paddingTop: 0, height: "70vh"}}>
+    <DetailPage />
+    // (isLoad ? <div className="App">
+    //   <div style={{backgroundColor: "blue", paddingTop: 0, height: "70vh"}}>
       
-        <div style={{top: "50%",left: "50%"}}>
-      <h1>Crypto Coins</h1>
-      <p>Listing of Prices</p>
-      </div>
-      </div>
-      <center>
-      <input placeholder="Filter" name="filter" onChange={searchBar} style={{width: "70%", height: "5vh",marginTop: "5%"}}/>
-      <table style={{width: "70%", paddingTop: "5%"}}>
-                    <th></th>
-                    <th><button onClick={sortColumn}>Name</button></th>
-                    <th><button onClick={sortColumn}>Current Price</button></th>
-                    <th> <button onClick={sortColumn}>Market Cap</button></th>
-                    <th> <button onClick={sortColumn}>Total Volume</button></th>
-                    <th> <button onClick={sortColumn}>Price Change 24h</button></th>
-                    <th> <button onClick={sortColumn}>Circulating Supply</button></th>
-                <tbody>
-                {shownData.length > 0 ? shownData.slice(0,limit).map((c) => {
-                  return(
-                  <CryptoList coin={c} key={c.id}/>
-                  )
-                }): <ErrorComponent errorMessage="NO COINS FOUND!" error="noResult" style={{backgroundColor: "blue"}}/>} 
-                </tbody>
-    </table>
-    {data.length > limit && shownData.length > 10 && <button onClick={isLoadMore}>Load 10 more</button>}
-    </center>
-    <br />
-    </div> : (isErr ? <ErrorComponent errorMessage="No Connection" error="Not Connected"/> : <LoadingComponent />))
+    //     <div id="titleText">
+    //   <h1>Crypto Coins</h1>
+    //   <p>Listing of Prices</p>
+    //   </div>
+    //   </div>
+    //   <center>
+      
+    //   <input placeholder="Search..." name="filter" onChange={searchBar} id="filterBar"/>
+
+    //   <table className="tableFullList">
+    //                 <th></th>
+    //                 <th><button onClick={sortColumn}>Name</button></th>
+    //                 <th><button onClick={sortColumn}>Current Price</button></th>
+    //                 <th> <button onClick={sortColumn}>Market Cap</button></th>
+    //                 <th> <button onClick={sortColumn}>Total Volume</button></th>
+    //                 <th> <button onClick={sortColumn}>Price Change 24h</button></th>
+    //                 <th> <button onClick={sortColumn}>Circulating Supply</button></th>
+    //             <tbody>
+    //             {shownData.length > 0 ? shownData.slice(0,limit).map((c) => {
+    //               return(
+    //               <CryptoList coin={c} key={c.id}/>
+    //               )
+    //             }): <ErrorComponent errorMessage="NO COINS FOUND!" error="noResult" style={{backgroundColor: "blue"}}/>} 
+    //             </tbody>
+    // </table>
+    // {data.length > limit && shownData.length > 10 && <button onClick={isLoadMore}>Load 10 more</button>}
+    // </center>
+    // <br />
+    // </div> : (isErr ? <ErrorComponent errorMessage="No Connection" error="Not Connected"/> : <LoadingComponent />))
   );
 }
 
