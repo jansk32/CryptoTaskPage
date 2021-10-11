@@ -4,6 +4,7 @@ import './App.css';
 import axios from 'axios';
 import CryptoList from './cryptoListComponent';
 import LoadingComponent from './loadingComponent';
+import ErrorComponent from './noResultsComponent';
 
 
 function App() {
@@ -130,11 +131,11 @@ function App() {
                     <th> <button onClick={sortColumn}>Price Change 24h</button></th>
                     <th> <button onClick={sortColumn}>Circulating Supply</button></th>
                 <tbody>
-                {shownData.slice(0,limit).map((c) => {
+                {shownData.length > 0 ? shownData.slice(0,limit).map((c) => {
                   return(
                   <CryptoList coin={c} key={c.id}/>
                   )
-                })}
+                }): <ErrorComponent error="NO RESULTS FOUND!"/>} 
                 </tbody>
     </table>
     {data.length > limit && shownData.length > 10 && <button onClick={isLoadMore}>Load 10 more</button>}
