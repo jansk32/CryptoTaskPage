@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
+import LoadingComponent from './loadingComponent';
 import axios from 'axios'
 
 function DetailsPage(props) {
@@ -36,7 +37,7 @@ function DetailsPage(props) {
     
     //trying to make the image as background for coin (align left and large)
     return(
-        (loaded && <div>
+        (loaded ? <div>
             <div style={{backgroundColor: "cyan"}}>
             <div style={{ textAlign: "left", backgroundImage: 'url('+ coin.image.large+')', backgroundRepeat: 'no-repeat', backgroundPosition: 'cover'}}>
             <h1 style={{padding: '10%'}}>{coin.name}</h1>
@@ -81,7 +82,7 @@ function DetailsPage(props) {
                 <YAxis title="Price (AUD)"/>
                 </XYPlot>
             </center>
-        </div>)
+        </div> : <LoadingComponent />)
     )
 }
 
