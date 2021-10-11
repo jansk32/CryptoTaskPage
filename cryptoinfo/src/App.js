@@ -4,7 +4,7 @@ import './App.css';
 import axios from 'axios';
 import CryptoList from './cryptoListComponent';
 import LoadingComponent from './loadingComponent';
-import DetailsPage from './detailsPage';
+
 
 function App() {
 
