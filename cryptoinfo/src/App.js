@@ -4,11 +4,13 @@ import './App.css';
 import axios from 'axios';
 import CryptoList from './cryptoListComponent';
 import LoadingComponent from './loadingComponent';
+import ErrorComponent from './noResultsComponent';
 
 
 function App() {
 
   var [data, setData] = useState([]);
+  var [shownData, setShownData] = useState([]);
   var [limit, setLimit] = useState(10)
   var [isLoad, setIsLoad] = useState(false);
   var [loadMore, setLoadMore] = useState(false);
@@ -24,6 +26,7 @@ function App() {
     axios("https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud", {crossDomain: true})
     .then(res => {
       setData(res.data)
+      setShownData(res.data)
       setIsLoad(true)
     })
     .catch(err => console.log(err))
@@ -77,7 +80,8 @@ function App() {
       column: col
     })
     await console.log("Sorting data: " + col)
-      await setData(data.sort((a,b) => compare(a[col],b[col])))
+    // await setData(data.sort((a,b) => compare(a[col],b[col])))
+      await setShownData(data.sort((a,b) => compare(a[col],b[col])))
       await console.log(data)
       await setSort({
         isSort: false,
@@ -96,6 +100,17 @@ function App() {
     }
   }
 
+  // Search Bar
+  function searchBar(e){
+    var val = e.target.value.toLowerCase();
+    if (val) {
+      let n = data.filter(obj => (obj.name.toLowerCase().includes(val) || obj.symbol.toLowerCase().includes(val)))
+      setShownData(n)
+    }else{
+      setShownData(data)
+    }
+  }
+
   return (
     (isLoad ? <div className="App">
       <div style={{backgroundColor: "blue", paddingTop: 0, height: "70vh"}}>
@@ -106,7 +121,8 @@ function App() {
       </div>
       </div>
       <center>
-      <table style={{width: "70%", paddingTop: "10%"}}>
+      <input placeholder="Filter" name="filter" onChange={searchBar} style={{width: "70%", height: "5vh",marginTop: "5%"}}/>
+      <table style={{width: "70%", paddingTop: "5%"}}>
                     <th></th>
                     <th><button onClick={sortColumn}>Name</button></th>
                     <th><button onClick={sortColumn}>Current Price</button></th>
@@ -115,14 +131,14 @@ function App() {
                     <th> <button onClick={sortColumn}>Price Change 24h</button></th>
                     <th> <button onClick={sortColumn}>Circulating Supply</button></th>
                 <tbody>
-                {data.slice(0,limit).map((c) => {
+                {shownData.length > 0 ? shownData.slice(0,limit).map((c) => {
                   return(
                   <CryptoList coin={c} key={c.id}/>
                   )
-                })}
+                }): <ErrorComponent errorMessage="NO COINS FOUND!" error="noResult" style={{backgroundColor: "blue"}}/>} 
                 </tbody>
     </table>
-    {data.length > limit && <button onClick={isLoadMore}>Load 10 more</button>}
+    {data.length > limit && shownData.length > 10 && <button onClick={isLoadMore}>Load 10 more</button>}
     </center>
     <br />
     </div> : <LoadingComponent />)
