@@ -3,11 +3,14 @@ import {useEffect, useState} from 'react';
 import './App.css';
 import axios from 'axios';
 import CryptoList from './cryptoListComponent';
+import LoadingComponent from './loadingComponent';
+import DetailsPage from './detailsPage';
 
 function App() {
 
   var [data, setData] = useState([]);
   var [limit, setLimit] = useState(10)
+  var [isLoad, setIsLoad] = useState(false);
   var [loadMore, setLoadMore] = useState(false);
 
   // Sort takes in isSort and a column
@@ -21,6 +24,7 @@ function App() {
     axios("https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud", {crossDomain: true})
     .then(res => {
       setData(res.data)
+      setIsLoad(true)
     })
     .catch(err => console.log(err))
   },[])
@@ -93,8 +97,9 @@ function App() {
   }
 
   return (
-    <div className="App">
+    (isLoad ? <div className="App">
       <div style={{backgroundColor: "blue", paddingTop: 0, height: "70vh"}}>
+      
         <div style={{top: "50%",left: "50%"}}>
       <h1>Crypto Coins</h1>
       <p>Listing of Prices</p>
@@ -120,7 +125,7 @@ function App() {
     {data.length > limit && <button onClick={isLoadMore}>Load 10 more</button>}
     </center>
     <br />
-    </div>
+    </div> : <LoadingComponent />)
   );
 }
 
