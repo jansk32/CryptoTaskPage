@@ -2,12 +2,14 @@ import React, {useEffect, useState} from 'react'
 import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
 import LoadingComponent from './loadingComponent';
 import axios from 'axios'
+import ErrorComponent from './noResultsComponent';
 
 function DetailsPage(props) {
 
     var [coin, setCoin] = useState({})
     var [loaded, setLoaded] = useState(false)
     var [graphData, setGraphData] = useState([])
+    var [isErr, setErr] = useState(false);
     var [priceChangeTime, setPriceChangeTime] = useState({})
 
     // to get coin data (replace bitcoin with actual coin id)
@@ -19,7 +21,7 @@ function DetailsPage(props) {
             setLoaded(true)
             graphing(res.data)
           })
-          .catch(err => console.log(err))
+          .catch(err => setErr(true))
         },[])
     
     // Configure data sparklines to be used for graph
@@ -82,7 +84,7 @@ function DetailsPage(props) {
                 <YAxis title="Price (AUD)"/>
                 </XYPlot>
             </center>
-        </div> : <LoadingComponent />)
+        </div> : (isErr ? <ErrorComponent errorMessage="No Connection" error="Not Connected"/> : <LoadingComponent />))
     )
 }
 

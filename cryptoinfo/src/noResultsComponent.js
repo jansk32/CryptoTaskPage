@@ -15,7 +15,7 @@ function ErrorComponent(props) {
     }else{
         return (
             <div>
-                <h1>THERE WAS AN ERROR WITH THE CONNECTION</h1>
+                <h1>{props.errorMessage}</h1>
             </div>
         )
     }

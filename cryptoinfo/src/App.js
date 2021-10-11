@@ -13,6 +13,7 @@ function App() {
   var [shownData, setShownData] = useState([]);
   var [limit, setLimit] = useState(10)
   var [isLoad, setIsLoad] = useState(false);
+  var [isErr, setErr] = useState(false);
   var [loadMore, setLoadMore] = useState(false);
 
   // Sort takes in isSort and a column
@@ -29,7 +30,7 @@ function App() {
       setShownData(res.data)
       setIsLoad(true)
     })
-    .catch(err => console.log(err))
+    .catch(err => setErr(true))
   },[])
 
 
@@ -141,7 +142,7 @@ function App() {
     {data.length > limit && shownData.length > 10 && <button onClick={isLoadMore}>Load 10 more</button>}
     </center>
     <br />
-    </div> : <LoadingComponent />)
+    </div> : (isErr ? <ErrorComponent errorMessage="No Connection" error="Not Connected"/> : <LoadingComponent />))
   );
 }
 
