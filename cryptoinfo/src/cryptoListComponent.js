@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-// import greenArrow from './green-arrow.png'
-// import redArrow from './red-arrow.jpg'
 
 class CryptoList extends Component {
     constructor(props){
@@ -15,9 +13,9 @@ class CryptoList extends Component {
                     
                     <tr style={{borderTop: "1px black solid", textAlign: "center"}}>
                         
-                        <td><Link to="details" params={{coinId: this.state.id}} ><img src={this.state.image} alt="coin logo" style={{width:"40%"}} /></Link></td>
+                        <td><Link to="details" params={{coinId: this.state.id}} ><img src={this.state.image} alt="coin logo" style={{width:"70%"}} /></Link></td>
                         
-                        <td><Link to={`details/${this.state.id}`}><h1>{this.state.name}</h1></Link></td>
+                        <td><Link to={`details/${this.state.id}`}><h1 className="coinNameTable">{this.state.name}</h1></Link></td>
                         <td><h3><b>{this.state.current_price}</b></h3></td>
                         <td><h3><b>{this.state.market_cap}</b></h3></td>
                         <td><h3><b>{this.state.total_volume}</b></h3></td>

@@ -11,9 +11,9 @@ function DetailsPage() {
     var [loaded, setLoaded] = useState(false)
     var [graphData, setGraphData] = useState([])
     var [isErr, setErr] = useState(false);
-    var [priceChangeTime, setPriceChangeTime] = useState({})
+    // var [priceChangeTime, setPriceChangeTime] = useState({})
 
-    // to get coin data (replace bitcoin with actual coin id)
+    // to get coin data 
     useEffect(() => {  
         axios.get(`https://api.coingecko.com/api/v3/coins/${symb.coinId}`, {crossDomain: true, params: {sparkline: true}})
           .then(res => {
@@ -38,18 +38,20 @@ function DetailsPage() {
         setGraphData(newArr)
     }
     
+
     //trying to make the image as background for coin (align left and large)
     return(
         (loaded ? <div>
             <div style={{backgroundColor: "cyan"}}>
-            <div style={{ textAlign: "left", backgroundImage: 'url('+ coin.image.large+')', backgroundRepeat: 'no-repeat', backgroundPosition: 'cover'}}>
-            <h1 style={{padding: '10%'}}>{coin.name}</h1>
-            <p  style={{width: '70%', paddingLeft: "10%", paddingBottom: "10%"}}>{coin.description.en}</p>
+            <div style={{ textAlign: "left", backgroundImage: `url(${coin.image.large})`, backgroundRepeat: 'no-repeat'}}>
+            <h1 className="titleHeader">{coin.name}</h1>
+            <div className= "titleDescription" dangerouslySetInnerHTML={{ __html: coin.description.en }}></div>
             </div>
             </div>
-            <h1>Market Details:</h1>
+            
+            <h1 >Market Details:</h1>
             <center>
-            <table width="70%" style={{paddingBottom: "5%"}}>
+            <table style={{paddingBottom: "5%",width: "70%"}}>
                 <tr>
                 <th><h3>Current Price</h3></th>
                 <th><h3>High 24h</h3></th>
