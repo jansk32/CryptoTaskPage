@@ -15,7 +15,10 @@ function ErrorComponent(props) {
     }else{
         return (
             <div>
+                <h1>There seems to be a problem</h1>
                 <h1>{props.errorMessage}</h1>
+                <h1>Please try to check your connection...</h1>
+                <img src="https://image.shutterstock.com/image-vector/sad-coin-character-wallpaper-free-260nw-1465036271.jpg" alt="sad coin" />
             </div>
         )
     }

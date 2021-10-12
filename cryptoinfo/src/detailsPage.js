@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
+import { useParams } from 'react-router-dom';
 import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
 import LoadingComponent from './loadingComponent';
 import axios from 'axios'
 import ErrorComponent from './noResultsComponent';
 
-function DetailsPage(props) {
-
+function DetailsPage() {
+    var symb = useParams();
     var [coin, setCoin] = useState({})
     var [loaded, setLoaded] = useState(false)
     var [graphData, setGraphData] = useState([])
@@ -13,8 +14,8 @@ function DetailsPage(props) {
     var [priceChangeTime, setPriceChangeTime] = useState({})
 
     // to get coin data (replace bitcoin with actual coin id)
-    useEffect(() => {
-        axios.get("https://api.coingecko.com/api/v3/coins/bitcoin", {crossDomain: true, params: {sparkline: true}})
+    useEffect(() => {  
+        axios.get(`https://api.coingecko.com/api/v3/coins/${symb.coinId}`, {crossDomain: true, params: {sparkline: true}})
           .then(res => {
             //console.log(res.data)
             setCoin(res.data)
