@@ -16,6 +16,7 @@ function ErrorComponent(props) {
         return (
             <div>
                 <h1>{props.errorMessage}</h1>
+                <h1>Please try again...</h1>
             </div>
         )
     }
