@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing a List of coin page 1`] = `
+<tr
+  style={
+    Object {
+      "borderTop": "1px black solid",
+      "textAlign": "center",
+    }
+  }
+>
+  <td>
+    <a
+      href="/details"
+      onClick={[Function]}
+      params={
+        Object {
+          "coinId": "bitcoin",
+        }
+      }
+    >
+      <img
+        alt="coin logo"
+        src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
+        style={
+          Object {
+            "width": "70%",
+          }
+        }
+      />
+    </a>
+  </td>
+  <td>
+    <a
+      href="/details/bitcoin"
+      onClick={[Function]}
+    >
+      <h1
+        className="coinNameTable"
+      >
+        Bitcoin
+      </h1>
+    </a>
+  </td>
+  <td>
+    <h3>
+      <b>
+        75137
+      </b>
+    </h3>
+  </td>
+  <td>
+    <h3>
+      <b>
+        1413864723414
+      </b>
+    </h3>
+  </td>
+  <td>
+    <h3>
+      <b>
+        57833378966
+      </b>
+    </h3>
+  </td>
+  <td>
+    <h3
+      style={
+        Object {
+          "color": "red",
+        }
+      }
+    >
+      <b>
+        -2373.550462723797
+         (
+        -3.06224
+        %)
+      </b>
+    </h3>
+  </td>
+  <td>
+    <h3>
+      <b>
+        18842562
+      </b>
+    </h3>
+  </td>
+</tr>
+`;

@@ -22,7 +22,10 @@ function DetailsPage() {
             setLoaded(true)
             graphing(res.data)
           })
-          .catch(err => setErr(true))
+          .catch(err => {
+              setErr(true)
+              console.error(err)
+          })
         },[])
     
     // Configure data sparklines to be used for graph

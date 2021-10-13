@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing for CryptoList No Result 1`] = `
+<tr>
+  <td
+    colSpan="7"
+  >
+    <center>
+      <h1>
+        NO RESULTS FOUND!
+      </h1>
+      <p>
+        Try another search word...
+      </p>
+    </center>
+  </td>
+</tr>
+`;
+
+exports[`Testing for No Connection 1`] = `
+<div>
+  <center>
+    <h1>
+      There seems to be a problem
+    </h1>
+    <h1 />
+    <h1>
+      Please check your connection and try again...
+    </h1>
+    <img
+      alt="cool coin"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTiSHJVnvVxKLiLbOen7dubuWq8H7Za8jjyw&usqp=CAU"
+    />
+    <p>
+      In the meantime, here's a cool bitcoin for your trouble
+    </p>
+  </center>
+</div>
+`;
