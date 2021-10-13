@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import './App.css';
+import cryptoHeader from './cryptoheader.jpeg'
 import axios from 'axios';
 import CryptoList from './cryptoListComponent';
 import LoadingComponent from './loadingComponent';
@@ -81,11 +82,11 @@ function HomePage() {
 
   return (
     (isLoad ? <div className="App">
-      <div style={{backgroundColor: "blue", height: "70vh"}}>
+      <div style={{backgroundImage: `url(${cryptoHeader})`, height: "70vh", backgroundColor: "rgba(255,255,255,0.5)"}}>
       
         <div id="titleText">
       <h1>Crypto Coins</h1>
-      <p>Listing of Prices</p>
+      <p>Finding your next investment</p>
       </div>
       </div>
       <center>
