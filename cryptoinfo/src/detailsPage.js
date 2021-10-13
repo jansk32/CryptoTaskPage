@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
 import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
 import LoadingComponent from './loadingComponent';
+import cryptoHeader from './cryptoheader.jpeg'
 import axios from 'axios'
 import ErrorComponent from './noResultsComponent';
 
@@ -45,14 +46,14 @@ function DetailsPage() {
     //trying to make the image as background for coin (align left and large)
     return(
         (loaded ? <div>
-            <div style={{backgroundColor: "cyan"}}>
-            <div style={{ textAlign: "left", backgroundImage: `url(${coin.image.large})`, backgroundRepeat: 'no-repeat'}}>
+            <div style={{backgroundImage: `url(${cryptoHeader})`}}>
+            <div style={{ textAlign: "left", backgroundImage: `url(${coin.image.large})`, backgroundRepeat: 'no-repeat', height:"70vh"}}>
             <h1 className="titleHeader">{coin.name}</h1>
             <div className= "titleDescription" dangerouslySetInnerHTML={{ __html: coin.description.en }}></div>
             </div>
             </div>
             
-            <h1 >Market Details:</h1>
+            <h1 style={{paddingLeft: "10%"}}>Market Details:</h1>
             <center>
             <table style={{paddingBottom: "5%",width: "70%"}}>
                 <tr>
@@ -74,7 +75,7 @@ function DetailsPage() {
             <td><b>{coin.market_data.price_change_percentage_7d_in_currency.aud} %</b></td>
             <td><b>{coin.market_data.price_change_percentage_200d_in_currency.aud} %</b></td>
             <td><b>{coin.market_data.price_change_percentage_1y_in_currency.aud} %</b></td>
-            <td><b>{coin.market_data.total_supply}</b></td>
+            <td><b>{coin.market_data.total_supply ? coin.market_data.total_supply : "Null"}</b></td>
             <td><b>AUD {coin.market_data.market_cap.aud}</b></td>
             </tr>
             </table>

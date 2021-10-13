@@ -19,7 +19,8 @@ function HomePage() {
   // Sort takes in isSort and a column
   var [sort, setSort] = useState({
     isSort: false,
-    column: "name"
+    column: "name",
+    isAscending: false
   })
 
   // initial useEffect to draw the data needed
@@ -44,18 +45,31 @@ function HomePage() {
   // handle click on heading
   async function sortColumn(e){
     var col = e.target.innerText.toLowerCase().replaceAll(" ", "_");
+    if (sort.column !== col){
     setSort({
       isSort: true,
-      column: col
-    })
+      column: col,
+      isAscending: false
+    })}
     await console.log("Sorting data: " + col)
     // await setData(data.sort((a,b) => compare(a[col],b[col])))
-      await setShownData(data.sort((a,b) => compare(a[col],b[col])))
-      await console.log(data)
-      await setSort({
-        isSort: false,
-        column: ""
-      });
+      var tmp = await data.sort((a,b) => compare(a[col],b[col]))
+      if (sort.isAscending === false){
+        await setShownData(tmp)
+        await setSort({
+          isSort: false,
+          column: col,
+          isAscending: true
+        });
+      }else{
+        await setShownData(tmp.reverse())
+        await setSort({
+          isSort: false,
+          column: "",
+          isAscending: false
+        });
+      }
+      
   }
 
   // sort based on column
