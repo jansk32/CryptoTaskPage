@@ -4,7 +4,6 @@ import axios from 'axios';
 import CryptoList from './cryptoListComponent';
 import LoadingComponent from './loadingComponent';
 import ErrorComponent from './noResultsComponent';
-import DetailPage from'./detailsPage'
 
 
 function HomePage() {

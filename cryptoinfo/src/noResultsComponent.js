@@ -15,11 +15,13 @@ function ErrorComponent(props) {
     }else{
         return (
             <div>
+                <center>
                 <h1>There seems to be a problem</h1>
                 <h1>{props.errorMessage}</h1>
                 <h1>Please check your connection and try again...</h1>
-                <img src="https://image.shutterstock.com/image-vector/sad-coin-character-wallpaper-free-260nw-1465036271.jpg" alt="sad coin" />
-                <p>In the meantime, here's a cute meme for your trouble</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTiSHJVnvVxKLiLbOen7dubuWq8H7Za8jjyw&usqp=CAU" alt="cool coin" />
+                <p>In the meantime, here's a cool bitcoin for your trouble</p>
+                </center>
             </div>
         )
     }
