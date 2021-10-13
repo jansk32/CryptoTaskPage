@@ -53,9 +53,9 @@ function DetailsPage() {
             </div>
             </div>
             
-            <h1 style={{paddingLeft: "10%"}}>Market Details:</h1>
+            <h1 className="detailHeadings" style={{paddingLeft: "10%"}}>Market Details:</h1>
             <center>
-            <table style={{paddingBottom: "5%",width: "70%"}}>
+            <table className="detailsPageTable" >
                 <tr>
                 <th><h3>Current Price</h3></th>
                 <th><h3>High 24h</h3></th>
@@ -79,8 +79,9 @@ function DetailsPage() {
             <td><b>AUD {coin.market_data.market_cap.aud}</b></td>
             </tr>
             </table>
-            <h1>Market Price over 7 days</h1>
+            <h1 className="detailHeadings">Market Price over 7 days</h1>
             <XYPlot
+            margin={{left: 100}}
                 width={1000}
                 height={500}
                 >
@@ -91,6 +92,7 @@ function DetailsPage() {
                 <YAxis title="Price (AUD)"/>
                 </XYPlot>
             </center>
+            <br/>
         </div> : (isErr ? <ErrorComponent errorMessage="Unable to find Coin" error="Not Connected"/> : <LoadingComponent />))
     )
 }
