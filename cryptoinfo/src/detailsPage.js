@@ -87,7 +87,7 @@ function DetailsPage() {
                 <YAxis title="Price (AUD)"/>
                 </XYPlot>
             </center>
-        </div> : (isErr ? <ErrorComponent errorMessage="No Connection" error="Not Connected"/> : <LoadingComponent />))
+        </div> : (isErr ? <ErrorComponent errorMessage="Unable to find Coin" error="Not Connected"/> : <LoadingComponent />))
     )
 }
 

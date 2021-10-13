@@ -82,7 +82,7 @@ function HomePage() {
 
   return (
     (isLoad ? <div className="App">
-      <div style={{backgroundColor: "blue", paddingTop: 0, height: "70vh"}}>
+      <div style={{backgroundColor: "blue", height: "70vh"}}>
       
         <div id="titleText">
       <h1>Crypto Coins</h1>
@@ -112,7 +112,7 @@ function HomePage() {
     {data.length > limit && shownData.length > 10 && <button onClick={isLoadMore}>Load 10 more</button>}
     </center>
     <br />
-    </div> : (isErr ? <ErrorComponent errorMessage="No Connection" error="Not Connected"/> : <LoadingComponent />))
+    </div> : (isErr ? <ErrorComponent errorMessage="Unable to find coins" error="Not Connected"/> : <LoadingComponent />))
   );
 }
 

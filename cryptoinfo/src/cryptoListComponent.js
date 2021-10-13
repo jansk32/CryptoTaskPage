@@ -19,7 +19,7 @@ class CryptoList extends Component {
                         <td><h3><b>{this.state.current_price}</b></h3></td>
                         <td><h3><b>{this.state.market_cap}</b></h3></td>
                         <td><h3><b>{this.state.total_volume}</b></h3></td>
-                        <td><h3><b>{this.state.price_change_24h} ({this.state.price_change_percentage_24h}%)</b></h3></td>
+                        <td><h3 style={{color: this.state.price_change_percentage_24h >= 0 ? "green" : "red"}}><b>{this.state.price_change_24h} ({this.state.price_change_percentage_24h}%)</b></h3></td>
                         <td><h3><b>{this.state.circulating_supply}</b></h3></td>
                         
                     </tr>

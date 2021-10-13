@@ -30,7 +30,7 @@
 }
 
 .coinNameTable {
-  font-size: medium;
+  font-size: large;
 }
 
 #filterBar{
@@ -43,6 +43,7 @@
 
 #titleText{
 font-size: 7vh;
+padding-top: 10%;
 }
 
 button {
@@ -88,4 +89,8 @@ th{
 
 .detailBody{
   width: 80%;
+}
+
+::placeholder{
+  padding-left: 5px;
 }
